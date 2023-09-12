@@ -10,8 +10,8 @@ class DisplayPhoto extends StatelessWidget {
       child: Image.asset(
         'assets/images/slack-display-photo.jpg',
         fit: BoxFit.cover,
-        height: 160,
-        width: 160,
+        height: 150,
+        width: 150,
       ),
     );
   }

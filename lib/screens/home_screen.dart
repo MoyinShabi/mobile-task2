@@ -11,17 +11,19 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String fullName = 'Moyinoluwa Shabi';
+  String headline = 'Mobile Developer';
   String slackUsername = 'Moyin Shabi';
   String githubHandle = '@MoyinShabi';
-  String bio =
+  String about =
       "Currently a college student with a huge interest in technology. I wish to further develop my skills, gain others, and build projects based on my growing interests. Hence, I’ll be able to contribute to the society and organizations I’ll be privileged to work for.";
 
-  void updateData(Map<String, String> editedData) {
+  void _updateData(Map<String, String> editedData) {
     setState(() {
       fullName = editedData['fullName'] ?? fullName;
+      headline = editedData['headline'] ?? headline;
       slackUsername = editedData['slackUsername'] ?? slackUsername;
       githubHandle = editedData['githubHandle'] ?? githubHandle;
-      bio = editedData['bio'] ?? bio;
+      about = editedData['about'] ?? about;
     });
   }
 
@@ -38,17 +40,28 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const DisplayPhoto(),
-              const SizedBox(height: 24),
-              Section(sectionName: 'Full Name', text: fullName),
+              const SizedBox(height: 20),
+              Text(
+                fullName,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 5),
+              Text(
+                headline,
+                style: const TextStyle(fontSize: 16),
+              ),
               const Divider(thickness: 4),
               const SizedBox(height: 10),
-              Section(sectionName: 'Slack Username', text: slackUsername),
+              Section(sectionName: 'About', text: about, textFontSize: 14),
               const Divider(thickness: 4),
               const SizedBox(height: 10),
-              Section(sectionName: 'GitHub Handle', text: githubHandle),
+              Section(sectionName: 'Slack', text: slackUsername),
               const Divider(thickness: 4),
               const SizedBox(height: 10),
-              Section(sectionName: 'About Me', text: bio, textFontSize: 14),
+              Section(sectionName: 'GitHub', text: githubHandle),
             ],
           ),
         ),
@@ -56,21 +69,22 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
         elevation: 0,
+        icon: const Icon(Icons.edit_rounded),
+        label: const Text('Edit CV'),
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => EditDetailsScreen(
-                onSave: updateData,
                 fullName: fullName,
+                headline: headline,
                 slackUsername: slackUsername,
                 githubHandle: githubHandle,
-                bio: bio,
+                about: about,
+                onSave: _updateData,
               ),
             ),
           );
         },
-        icon: const Icon(Icons.edit_rounded),
-        label: const Text('Edit CV'),
       ),
     );
   }

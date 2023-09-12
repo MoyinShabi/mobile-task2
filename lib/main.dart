@@ -14,6 +14,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
             brightness: Brightness.dark, seedColor: Colors.blueAccent),
         useMaterial3: true,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        splashFactory: NoSplash.splashFactory,
         fontFamily: 'Poppins',
         appBarTheme: const AppBarTheme(
           elevation: 1,

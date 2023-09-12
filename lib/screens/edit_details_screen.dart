@@ -6,6 +6,7 @@ class EditDetailsScreen extends StatefulWidget {
   final String slackUsername;
   final String githubHandle;
   final String about;
+  final String imageUrl;
   final Function(Map<String, String>) onSave;
 
   const EditDetailsScreen({
@@ -16,6 +17,7 @@ class EditDetailsScreen extends StatefulWidget {
     required this.githubHandle,
     required this.about,
     required this.onSave,
+    required this.imageUrl,
   });
 
   @override
@@ -30,6 +32,7 @@ class _EditDetailsScreenState extends State<EditDetailsScreen> {
       TextEditingController();
   final TextEditingController _githubHandleController = TextEditingController();
   final TextEditingController _aboutController = TextEditingController();
+  final TextEditingController _imageUrlController = TextEditingController();
 
   @override
   void initState() {
@@ -38,6 +41,7 @@ class _EditDetailsScreenState extends State<EditDetailsScreen> {
     _slackUsernameController.text = widget.slackUsername;
     _githubHandleController.text = widget.githubHandle;
     _aboutController.text = widget.about;
+    _imageUrlController.text = widget.imageUrl;
     super.initState();
   }
 
@@ -48,6 +52,7 @@ class _EditDetailsScreenState extends State<EditDetailsScreen> {
     _slackUsernameController.dispose();
     _githubHandleController.dispose();
     _aboutController.dispose();
+    _imageUrlController.dispose();
     super.dispose();
   }
 
@@ -60,6 +65,7 @@ class _EditDetailsScreenState extends State<EditDetailsScreen> {
         'slackUsername': _slackUsernameController.text,
         'githubHandle': _githubHandleController.text,
         'about': _aboutController.text,
+        'imageUrl': _imageUrlController.text,
       };
       widget.onSave(editedData);
       Navigator.of(context).pop();
@@ -84,7 +90,7 @@ class _EditDetailsScreenState extends State<EditDetailsScreen> {
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
+              children: [
                 TextFormField(
                   controller: _fullNameController,
                   decoration: const InputDecoration(labelText: 'Full Name'),
@@ -172,6 +178,26 @@ class _EditDetailsScreenState extends State<EditDetailsScreen> {
                   },
                   onSaved: (value) {
                     _aboutController.text = value!;
+                  },
+                ),
+                TextFormField(
+                  controller: _imageUrlController,
+                  decoration: const InputDecoration(
+                      labelText: 'Display Photo URL',
+                      hintText: 'E.g https://picsum.photos/536/354',
+                      hintStyle: TextStyle(fontSize: 14),
+                      helperText: 'Copy and paste a valid URL'),
+                  validator: (value) {
+                    if (value == null ||
+                        value.isEmpty ||
+                        value.trim().length <= 1 ||
+                        !Uri.parse(value).hasAbsolutePath) {
+                      return 'Enter a valid URL';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _imageUrlController.text = value!;
                   },
                 ),
                 const SizedBox(height: 24),

@@ -11,12 +11,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String fullName = 'Moyinoluwa Shabi';
-  String headline = 'Mobile Developer';
+  String headline = 'Mobile Developer | Computer Engineering Student';
   String slackUsername = 'Moyin Shabi';
   String githubHandle = '@MoyinShabi';
   String about =
       "Currently a college student with a huge interest in technology. I wish to further develop my skills, gain others, and build projects based on my growing interests. Hence, I’ll be able to contribute to the society and organizations I’ll be privileged to work for.";
-
+  String imageUrl =
+      'https://ca.slack-edge.com/T05FFAA91JP-U05R9C5KVM1-4330588d04f6-512';
   void _updateData(Map<String, String> editedData) {
     setState(() {
       fullName = editedData['fullName'] ?? fullName;
@@ -24,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
       slackUsername = editedData['slackUsername'] ?? slackUsername;
       githubHandle = editedData['githubHandle'] ?? githubHandle;
       about = editedData['about'] ?? about;
+      imageUrl = editedData['imageUrl'] ?? imageUrl;
     });
   }
 
@@ -39,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const DisplayPhoto(),
+              DisplayPhoto(imageUrl: imageUrl),
               const SizedBox(height: 20),
               Text(
                 fullName,
@@ -48,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 5),
+              const SizedBox(height: 4),
               Text(
                 headline,
                 style: const TextStyle(fontSize: 16),
@@ -80,6 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 slackUsername: slackUsername,
                 githubHandle: githubHandle,
                 about: about,
+                imageUrl: imageUrl,
                 onSave: _updateData,
               ),
             ),

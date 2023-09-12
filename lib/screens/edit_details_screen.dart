@@ -52,7 +52,12 @@ class _EditDetailsScreenState extends State<EditDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Details'),
+        title: const Text('Edit CV'),
+        leading: IconButton(
+          onPressed: Navigator.of(context).pop,
+          icon: const Icon(Icons.arrow_back_ios_rounded),
+        ),
+        forceMaterialTransparency: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -66,20 +71,23 @@ class _EditDetailsScreenState extends State<EditDetailsScreen> {
                   labelText: 'Full Name',
                 ),
               ),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: _slackUsernameController,
                 decoration: const InputDecoration(labelText: 'Slack Username'),
               ),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: _githubHandleController,
                 decoration: const InputDecoration(labelText: 'GitHub Handle'),
               ),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: _bioController,
                 maxLines: 10,
-                decoration: const InputDecoration(labelText: 'Brief Bio'),
+                decoration: const InputDecoration(labelText: 'Bio'),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: () {
                   Map<String, String> editedData = {

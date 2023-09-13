@@ -6,7 +6,9 @@
 - Ability to modify the existing CV data with form validation & real-time updates on save
 
 ## Demo: [Appetize Demo](https://appetize.io/app/5dttv6tiuzmgiygiua2tuilf6m?device=pixel7&osVersion=13.0&scale=75) 
-View on desktop for best performance
+Note: 
+- View on desktop for best performance
+- Due to the Appetize free tier limit, please limit your testing to 5 minutes or less
 
 ## Packages Used
 None

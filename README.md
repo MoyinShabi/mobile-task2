@@ -1,16 +1,38 @@
-# mobile_task2
+# Mobile CV Application (HNGx Task 2)
 
-A new Flutter project.
+## Features
+- Multi-screen application
+- Simple UI showcasing pre-filled CV details
+- Ability to modify the existing CV data with form validation & real-time updates on save
 
-## Getting Started
+## Demo: [Appetize Demo](https://appetize.io/app/5dttv6tiuzmgiygiua2tuilf6m?device=pixel7&osVersion=13.0&scale=75) 
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Packages Used
+None
+## Setup Instructions
+To run this project on your local machine, you'll need to have Flutter installed. If you haven't already, you can follow the [Flutter installation guide](https://flutter.dev/docs/get-started/install) for your platform.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Once Flutter is set up, follow these steps:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone this repository:
+
+ ```bash
+   git clone https://github.com/MoyinShabi/mobile-task2.git
+ ```
+2. Navigate to the project directory:
+
+ ```bash
+cd mobile-task2
+ ```
+3. Install the project dependencies:
+
+ ```bash
+flutter pub get
+ ```
+4. Run the app:
+
+ ```bash
+flutter run
+ ```
+

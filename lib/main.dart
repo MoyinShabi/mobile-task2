@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'CV App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-            brightness: Brightness.dark, seedColor: Colors.blueAccent),
+            brightness: Brightness.dark, seedColor: Colors.blue),
         useMaterial3: true,
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
